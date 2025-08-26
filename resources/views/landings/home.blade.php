@@ -826,7 +826,7 @@
                 <ul class="list-unstyled">
                     <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Dar es Salaam, Tanzania</li>
                     <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@shulecloud.cloud</li>
-                    <li class="mb-2"><i class="bi bi-telephone me-2"></i> +(255) 123 456 789</li>
+                    <li class="mb-2"><i class="bi bi-telephone me-2"></i> +(255) 766 959 907</li>
                     <li class="mb-2"><i class="bi bi-globe me-2"></i> shulecloud.cloud</li>
                 </ul>
             </div>
