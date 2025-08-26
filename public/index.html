@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShuleCloud | School Management System by MotSoft</title>
+     
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+      :root {
+        --bs-primary: #052905;
+        --bs-primary-rgb: 5, 41, 5;
+        --bs-secondary: #e9b949;
+        --bs-dark: #021502;
+        --bs-light: #f8f9fa;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #333;
+      }
+      
+      .btn-primary {
+        background-color: var(--bs-primary);
+        border-color: var(--bs-primary);
+      }
+      
+      .btn-primary:hover {
+        background-color: #031c03;
+        border-color: #031c03;
+      }
+      
+      .bg-primary {
+        background-color: var(--bs-primary) !important;
+      }
+      
+      .text-primary {
+        color: var(--bs-primary) !important;
+      }
+      
+      .education-icon {
+        background-color: rgba(var(--bs-primary-rgb), 0.1);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        color: var(--bs-primary);
+      }
+      
+      .module-card {
+        transition: transform 0.3s ease;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        height: 100%;
+      }
+      
+      .module-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      }
+      
+      .price-table {
+        border: 1px solid #e9ecef;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+      
+      .price-table.popular {
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 15px rgba(5, 41, 5, 0.2);
+        position: relative;
+      }
+      
+      .popular-badge {
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        background: var(--bs-secondary);
+        color: var(--bs-dark);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+      }
+      
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--bs-primary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+      }
+      
+      .testimonial {
+        background: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      }
+      
+      .hero-img {
+        position: relative;
+      }
+      
+      .img-card {
+        position: absolute;
+        top: 20%;
+        right: -10%;
+        z-index: 2;
+        max-width: 280px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border-radius: 12px;
+      }
+      
+      .img-main {
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      }
+      
+      .stats-section {
+        background: linear-gradient(135deg, var(--bs-primary) 0%, #031c03 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .mission-statement {
+        background: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        position: absolute;
+        bottom: -30px;
+        right: -30px;
+        max-width: 350px;
+      }
+      
+      .mission-icon {
+        background: var(--bs-primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      
+      .footer {
+        background: var(--bs-dark);
+        color: white;
+      }
+      
+      .footer a {
+        color: rgba(255,255,255,0.8);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      
+      .footer a:hover {
+        color: white;
+      }
+      
+      .credits {
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .btn-white-outline {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+      }
+      
+      .btn-white-outline:hover {
+        background: white;
+        color: var(--bs-primary);
+      }
+      
+      .btn-white.hover-outline {
+        background: white;
+        color: var(--bs-primary);
+        border: 2px solid white;
+      }
+      
+      .btn-white.hover-outline:hover {
+        background: transparent;
+        color: white;
+      }
+      
+      .navbar {
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+      
+      .navbar-brand {
+        font-weight: 700;
+        color: white !important;
+        font-size: 1.5rem;
+      }
+      
+      .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-link:hover, .nav-link.active {
+        color: white !important;
+      }
+      
+      .hero-section {
+        background: linear-gradient(135deg, var(--bs-primary) 0%, #031c03 100%);
+        color: white;
+        padding: 7rem 0;
+      }
+      
+      section {
+        padding: 5rem 0;
+      }
+      
+      .bg-light {
+        background-color: #f8f9fa !important;
+      }
+      
+      /* New image styling */
+      .img-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      
+      .img-container img {
+        transition: transform 0.5s ease;
+      }
+      
+      .img-container:hover img {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- Header -->
+    <header class="navbar navbar-expand-lg fixed-top" style="background-color: var(--bs-primary);">
+      <div class="container">
+        <a class="navbar-brand" href="#">ShuleCloud</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#modules">Modules</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">Testimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a href="#demo" class="btn btn-light ms-3">Request Demo</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="text-uppercase mb-3 opacity-75">Powered by MotSoft</span>
+            <h1 class="mb-4">Streamline Your School Operations with ShuleCloud</h1>
+            <p class="lead mb-5">Manage students, teachers, classes, attendance, grades, and more with our all-in-one school management system designed for educational excellence.</p>
+            <div class="d-flex gap-3">
+              <a href="#demo" class="btn btn-light btn-lg">Get Started Now</a>
+              <a href="#features" class="btn btn-outline-light btn-lg">Explore Features</a>
+            </div>
+            <div class="mt-5">
+              <p class="text-uppercase mb-2 opacity-75">Accessible at: shulecloud.cloud</p>
+              <div class="d-flex gap-4">
+                <div class="bg-white p-3 rounded text-dark fw-bold">School</div>
+                <div class="bg-white p-3 rounded text-dark fw-bold">Academy</div>
+                <div class="bg-white p-3 rounded text-dark fw-bold">University</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="hero-img">
+              <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="ShuleCloud Dashboard" class="img-fluid rounded shadow img-main">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+            <div class="position-relative">
+              <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="School Management" class="img-fluid rounded shadow">
+              </div>
+              <div class="mission-statement p-4 rounded shadow">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="mission-icon me-3">
+                    <i class="bi bi-mortarboard fs-4"></i>
+                  </div>
+                  <h3 class="mb-0">Our Mission</h3>
+                </div>
+                <p class="mb-0">To empower educational institutions with technology that simplifies administration and enhances learning experiences.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <span class="text-primary text-uppercase fw-bold">About ShuleCloud</span>
+            <h2 class="mb-4">Transforming Education Administration for the Digital Age</h2>
+            <p class="mb-4">ShuleCloud is a comprehensive school management system designed to streamline administrative tasks, enhance communication, and improve educational outcomes.</p>
+            <p class="mb-4">Our platform integrates all aspects of school management into one seamless solution, saving time, reducing paperwork, and enabling educators to focus on what matters most - teaching.</p>
+            
+            <h4 class="h5 fw-bold mb-3">Our Core Values</h4>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-primary text-white rounded-circle p-2 me-3">
+                    <i class="bi bi-check"></i>
+                  </div>
+                  <span>Educational Excellence</span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-primary text-white rounded-circle p-2 me-3">
+                    <i class="bi bi-check"></i>
+                  </div>
+                  <span>Data Security</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-primary text-white rounded-circle p-2 me-3">
+                    <i class="bi bi-check"></i>
+                  </div>
+                  <span>User-Friendly Design</span>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="bg-primary text-white rounded-circle p-2 me-3">
+                    <i class="bi bi-check"></i>
+                  </div>
+                  <span>Continuous Innovation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="bg-light" id="features">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6 mx-auto text-center" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold">Features</span>
+            <h2>Why Choose ShuleCloud</h2>
+            <p>Our school management system is designed by educators for educators, with features that address the real challenges faced by schools every day.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+            <div class="text-center">
+              <div class="education-icon mx-auto">
+                <i class="bi bi-people fs-4"></i>
+              </div>
+              <h4 class="h5">Student Management</h4>
+              <p>Complete student profiles, enrollment, records, and tracking in one centralized system.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-center">
+              <div class="education-icon mx-auto">
+                <i class="bi bi-clipboard-data fs-4"></i>
+              </div>
+              <h4 class="h5">Gradebook & Reporting</h4>
+              <p>Easy grade entry, report cards, transcripts, and performance analytics.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-center">
+              <div class="education-icon mx-auto">
+                <i class="bi bi-calendar-check fs-4"></i>
+              </div>
+              <h4 class="h5">Attendance Tracking</h4>
+              <p>Automated attendance with notifications and detailed reporting.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center">
+              <div class="education-icon mx-auto">
+                <i class="bi bi-chat-dots fs-4"></i>
+              </div>
+              <h4 class="h5">Parent Portal</h4>
+              <p>Keep parents informed with real-time updates on grades, attendance, and school events.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Feature Images Row -->
+        <div class="row mt-5">
+          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="img-container">
+              <img src="https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Student Management" class="img-fluid rounded shadow">
+            </div>
+          </div>
+          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="img-container">
+              <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gradebook System" class="img-fluid rounded shadow">
+            </div>
+          </div>
+          <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="img-container">
+              <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Parent Portal" class="img-fluid rounded shadow">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6 mx-auto text-center" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold">Pricing</span>
+            <h2>Affordable Plans for Every School</h2>
+            <p>Flexible pricing designed to meet the needs of schools of all sizes</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="price-table p-4 rounded shadow h-100">
+              <h3>Small School</h3>
+              <p>Ideal for small schools and academies with up to 200 students.</p>
+              <div class="my-4">
+                <span class="h2 fw-bold">₦ 299,000</span>
+                <span class="text-muted">/ mwaka</span>
+              </div>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Hadi wanafunzi 200</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Ripoti za msingi</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Msaada kwa barua pepe</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Usimamizi wa wanafunzi</li>
+              </ul>
+              <a href="#" class="btn btn-primary w-100">Get Started</a>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="price-table popular p-4 rounded shadow h-100">
+              <div class="popular-badge">Most Popular</div>
+              <h3>Medium School</h3>
+              <p>Perfect for medium-sized schools with 200-1000 students.</p>
+              <div class="my-4">
+                <span class="h2 fw-bold">₦ 699,000</span>
+                <span class="text-muted">/ mwaka</span>
+              </div>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Wanafunzi 200-1000</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Ripoti za hali ya juu</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Msaada wa kipaumbele</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Kiwango cha wazazi</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Ufuatiliaji wa mahudhurio</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Mfumo wa gradebook</li>
+              </ul>
+              <a href="#" class="btn btn-primary w-100">Get Started</a>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="price-table p-4 rounded shadow h-100">
+              <h3>Large School/District</h3>
+              <p>Enterprise solution for large schools and districts with 1000+ students.</p>
+              <div class="my-4">
+                <span class="h2 fw-bold">Custom</span>
+                <span class="text-muted">pricing</span>
+              </div>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Wanafunzi 1000+</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Ripoti maalum</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Msaada maalum 24/7</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Usimamizi wa shule nyingi</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Ufikiaji wa API</li>
+                <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> Uingizwaji maalum</li>
+              </ul>
+              <a href="#" class="btn btn-primary w-100">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="bg-light" id="modules">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6 mx-auto text-center" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold">Modules</span>
+            <h2>Comprehensive School Management Modules</h2>
+            <p>Our platform includes everything you need to manage your school efficiently</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-people-fill fs-4"></i>
+              </div>
+              <h3 class="h5">Student Information System</h3>
+              <p>Complete student profiles, demographic data, medical records, and enrollment history all in one secure location.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-journal-bookmark fs-4"></i>
+              </div>
+              <h3 class="h5">Attendance Management</h3>
+              <p>Track student attendance with automated notifications to parents for absences and detailed reporting for administrators.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-clipboard-data fs-4"></i>
+              </div>
+              <h3 class="h5">Gradebook & Report Cards</h3>
+              <p>Comprehensive gradebook with customizable grading scales, report card generation, and transcript management.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-calendar-event fs-4"></i>
+              </div>
+              <h3 class="h5">Class Scheduling</h3>
+              <p>Create class schedules, assign teachers to classes, and manage room allocations with conflict detection.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-cash-coin fs-4"></i>
+              </div>
+              <h3 class="h5">Finance & Accounting</h3>
+              <p>Manage tuition fees, payments, expenses, and generate financial reports for better budget management.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="module-card p-4 rounded shadow">
+              <div class="education-icon">
+                <i class="bi bi-chat-left-dots fs-4"></i>
+              </div>
+              <h3 class="h5">Communication Portal</h3>
+              <p>Send announcements, newsletters, and alerts to parents, students, and staff through multiple channels.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Module Images -->
+        <div class="row mt-5">
+          <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="img-container">
+              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Student Information System" class="img-fluid rounded shadow">
+            </div>
+          </div>
+          <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="img-container">
+              <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Class Scheduling" class="img-fluid rounded shadow">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="0">
+            <h2 class="display-4 fw-bold">500+</h2>
+            <p class="lead">Schools Using Our System</p>
+          </div>
+          <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="display-4 fw-bold">250,000+</h2>
+            <p class="lead">Students Managed</p>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="display-4 fw-bold">99%</h2>
+            <p class="lead">Customer Satisfaction</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-6 mx-auto text-center" data-aos="fade-up">
+            <span class="text-primary text-uppercase fw-bold">Testimonials</span>
+            <h2>What Schools Are Saying</h2>
+            <p>Hear from educational institutions that have transformed their operations with our system</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+            <div class="testimonial p-4 rounded shadow">
+              <div class="mb-4">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="fst-italic mb-4">"Since implementing ShuleCloud, we've reduced administrative workload by 40%. The gradebook and attendance modules have been particularly transformative for our teachers."</p>
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1376&q=80" alt="Dr. Sarah Johnson" class="rounded-circle" width="60" height="60">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-0">Dr. Sarah Johnson</h5>
+                  <span class="text-muted">Principal, Lincoln High School</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial p-4 rounded shadow">
+              <div class="mb-4">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="fst-italic mb-4">"The parent portal has dramatically improved communication between school and home. Parents appreciate the real-time updates on grades and attendance."</p>
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Michael Rodriguez" class="rounded-circle" width="60" height="60">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-0">Michael Rodriguez</h5>
+                  <span class="text-muted">IT Director, Oakwood District</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial p-4 rounded shadow">
+              <div class="mb-4">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+              </div>
+              <p class="fst-italic mb-4">"The reporting capabilities have given us insights we never had before. We can now make data-driven decisions to improve student outcomes."</p>
+              <div class="d-flex align-items-center">
+                <div class="flex-shrink-0">
+                  <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1398&q=80" alt="James Wilson" class="rounded-circle" width="60" height="60">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mb-0">James Wilson</h5>
+                  <span class="text-muted">Superintendent, Valley School District</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="bg-primary text-white" id="demo">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <span class="text-uppercase opacity-75">Request a Demo</span>
+            <h2 class="mb-4">See ShuleCloud in Action</h2>
+            <p class="lead mb-4">Schedule a personalized demo to see how our system can transform your school administration</p>
+            <div class="d-flex flex-column gap-3">
+              <div class="d-flex align-items-center">
+                <div class="bg-white text-primary rounded-circle p-2 me-3">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div>
+                  <span class="d-block">Phone</span>
+                  <strong>+(255) 123 456 789</strong>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="bg-white text-primary rounded-circle p-2 me-3">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div>
+                  <span class="d-block">Email</span>
+                  <strong>info@shulecloud.cloud</strong>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="bg-white text-primary rounded-circle p-2 me-3">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <div>
+                  <span class="d-block">Website</span>
+                  <strong>shulecloud.cloud</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="bg-white rounded shadow p-4 text-dark">
+              <h3 class="mb-4">Request Your Demo</h3>
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="school" class="form-label">School Name</label>
+                  <input type="text" class="form-control" id="school" required>
+                </div>
+                <div class="mb-3">
+                  <label for="students" class="form-label">Number of Students</label>
+                  <select class="form-select" id="students">
+                    <option value="1-100">1-100</option>
+                    <option value="101-500">101-500</option>
+                    <option value="501-1000">501-1000</option>
+                    <option value="1000+">1000+</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Request Demo</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer pt-5 pb-4">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h3 class="text-white mb-4">ShuleCloud</h3>
+            <p>Comprehensive school management system designed to streamline administration, enhance communication, and improve educational outcomes.</p>
+            <p class="mb-0">Powered by <a href="https://motsoft.co.tz" target="_blank">MotSoft</a></p>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <h4 class="text-white mb-4">Product</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#features">Features</a></li>
+              <li class="mb-2"><a href="#pricing">Pricing</a></li>
+              <li class="mb-2"><a href="#modules">Modules</a></li>
+              <li class="mb-2"><a href="#demo">Request Demo</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+            <h4 class="text-white mb-4">Resources</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="#">Blog</a></li>
+              <li class="mb-2"><a href="#">Documentation</a></li>
+              <li class="mb-2"><a href="#">Support</a></li>
+              <li class="mb-2"><a href="#">Webinars</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <h4 class="text-white mb-4">Contact Us</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> Dar es Salaam, Tanzania</li>
+              <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@shulecloud.cloud</li>
+              <li class="mb-2"><i class="bi bi-telephone me-2"></i> +(255) 123 456 789</li>
+              <li class="mb-2"><i class="bi bi-globe me-2"></i> shulecloud.cloud</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <p class="mb-0">&copy; 2023 ShuleCloud. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+
+      // Navbar background change on scroll
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          document.querySelector('.navbar').style.backgroundColor = 'var(--bs-primary)';
+          document.querySelector('.navbar').style.padding = '0.5rem 0';
+        } else {
+          document.querySelector('.navbar').style.backgroundColor = 'var(--bs-primary)';
+          document.querySelector('.navbar').style.padding = '1rem 0';
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
